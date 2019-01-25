@@ -160,7 +160,7 @@ export default {
 
             // 跳转结果展示页面
             wx.navigateTo({
-                url: `../result/mian?lesson=${this.lesson}`,
+                url: `../result/main?lesson=${this.lesson}`,
             })
         }
     }
