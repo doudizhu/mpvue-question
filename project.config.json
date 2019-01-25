@@ -1,16 +1,17 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": false,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false
 	},
 	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
-	"appid": "wx69b17e48d6b0184b",
-	"projectname": "mpvue-app",
+	"appid": "wx8f1f45e8ddaa8109",
+	"projectname": "mpvue-question",
 	"condition": {
 		"search": {
 			"current": -1,
