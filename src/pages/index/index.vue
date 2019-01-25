@@ -3,12 +3,25 @@
       .login
         img(src='/static/imgs/guide_bg.jpg')
       .learn
-        button 调查问卷
+        button(
+          open-type="getUserInfo"
+          @getuserinfo="getUserInfo"
+        ) 调查问卷
 </template>
 
 <script>
 export default {
-  
+  methods: {
+    getUserInfo(e) {
+      // 判断授权是否成功
+      if(e.mp.detail.userInfo){
+        // console.log(e.mp.detail.userInfo)
+        // 存储到vuex
+        this.$store.dispatch('setIsAuthenticated',true)
+        this.$store.dispatch('setUser', e.mp.detail.userInfo)
+      }  
+    },
+  },
 }
 </script>
 
