@@ -35,6 +35,15 @@ export default {
     onLoad() {
         this.getData();
     },
+    onShow() {
+        // 理解mpvue的生命周期
+        // https://www.cnblogs.com/imgss/p/9164924.html
+        // 重新进入页面后，需重置
+        this.startqs = false
+        this.currentIndex = 0
+        this.btn_title = '开始问答'
+        this.lesson = ''
+    },
     computed: {
         disabled() {
             if (!this.startqs) return false
