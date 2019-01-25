@@ -106,6 +106,14 @@ export default {
                         {
                             "label": "测试",
                             "select": false
+                        },
+                        {
+                            "label": "运维",
+                            "select": false
+                        },
+                        {
+                            "label": "数据",
+                            "select": false
                         }
                     ]
                 },
