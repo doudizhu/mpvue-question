@@ -3,14 +3,105 @@
         .start_lesson
             navigator(url='../question/main')
                 button 重新提交
-        
+                
+        .hot_lesson
+            .lesson_all 
+                span 统计结果
+                span.look_all 分类
+            div(v-for='(item,index) in hotLessons' :key='index')
+                lesson-cell(:img='item.img' :title='item.title' :level='item.level' :count='item.count' :url='item.url')
 </template>
 
 <script>
+import lessonCell from '../../components/lessonCell/index'
 export default {
+    data(){
+        return {
+            hotLessons: [
+                {
+                    "img":"/static/imgs/lesson/IMG_1091.JPG",
+                    "title":"张迪",
+                    "level":"赞成",
+                    "count":"九点半",
+                    "url":"后端"
+                },
+                {
+                    "img":"/static/imgs/lesson/IMG_1089.JPG",
+                    "title":"王剑飞",
+                    "level":"不赞成",
+                    "count":"十点半",
+                    "url":"前端"
+                },
+                {
+                    "img":"/static/imgs/lesson/IMG_1090.JPG",
+                    "title":"刘广睿",
+                    "level":"不赞成",
+                    "count":"十点半",
+                    "url":"数据"
+                },
+                {
+                    "img":"/static/imgs/lesson/IMG_1092.JPG",
+                    "title":"王海超",
+                    "level":"赞成",
+                    "count":"十点",
+                    "url":"测试"
+                },
+                {
+                    "img":"/static/imgs/lesson/IMG_1096.JPG",
+                    "title":"王楠",
+                    "level":"赞成",
+                    "count":"十点",
+                    "url":"运维"
+                },
+                {
+                    "img":"/static/imgs/lesson/IMG_1095.JPG",
+                    "title":"李鹏",
+                    "level":"赞成",
+                    "count":"九点半",
+                    "url":"前端"
+                },
+                {
+                    "img":"/static/imgs/lesson/IMG_1094.JPG",
+                    "title":"张安东",
+                    "level":"赞成",
+                    "count":"十点",
+                    "url":"app"
+                },
+                {
+                    "img":"/static/imgs/lesson/IMG_1093.JPG",
+                    "title":"宁杉",
+                    "level":"赞成",
+                    "count":"九点半",
+                    "url":"app"
+                }
+            ],
+        }
+    },
     onLoad(option){
-        console.log(option)
-        this.url = option.lesson
+        // console.log(option)
+        // console.log(this.$store.state.user)
+        let item = option.lesson.split(','),
+            level = item[0],
+            count = item[1],
+            url = item[2],
+
+            user = this.$store.state.user,
+            img = user.avatarUrl,
+            title = user.nickName,
+
+            hotlesson = {
+                img,
+                title,
+                level,
+                count,
+                url,
+            }
+            
+        this.hotLessons.unshift(hotlesson)
+
+    },
+    components:{
+        lessonCell,
     },
 }
 </script>
@@ -119,5 +210,21 @@ export default {
   margin-top: 16px;
   background-color: #fff;
   border: 1px solid #ebeef5;
+}
+
+
+.lesson_all {
+  width: 100%;
+  box-sizing: border-box;
+  /* padding: 10px; */
+  overflow: hidden;
+  line-height: 46px;
+  padding: 0 10px;
+}
+.lesson_all .look_all {
+  font-size: 12px;
+  color: #aaa;
+  float: right;
+  
 }
 </style>

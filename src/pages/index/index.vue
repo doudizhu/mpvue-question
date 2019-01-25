@@ -1,211 +1,68 @@
 <template lang="pug">
-    scroll-view.learn(scroll-y)
-        .start_lesson
-            navigator(url='../question/main')
-                button 重新提交
-                
-        .hot_lesson
-            .lesson_all 
-                span 统计结果
-                span.look_all 分类
-            div(v-for='(item,index) in hotLessons' :key='index')
-                lesson-cell(:img='item.img' :title='item.title' :level='item.level' :count='item.count' :url='item.url')
+.container
+    .login
+        img(src='/static/imgs/guide_bg.jpg')
+    .learn
+        button(
+            open-type="getUserInfo"
+            @getuserinfo="getUserInfo"
+        ) 调查问卷
 </template>
 
 <script>
-import lessonCell from '../../components/lessonCell/index'
 export default {
-    data(){
-        return {
-            hotLessons: [
-                {
-                    "img":"/static/imgs/lesson/IMG_1091.JPG",
-                    "title":"张迪",
-                    "level":"赞成",
-                    "count":"九点半",
-                    "url":"后端"
-                },
-                {
-                    "img":"/static/imgs/lesson/IMG_1089.JPG",
-                    "title":"王剑飞",
-                    "level":"不赞成",
-                    "count":"十点半",
-                    "url":"前端"
-                },
-                {
-                    "img":"/static/imgs/lesson/IMG_1090.JPG",
-                    "title":"刘广睿",
-                    "level":"不赞成",
-                    "count":"十点半",
-                    "url":"数据"
-                },
-                {
-                    "img":"/static/imgs/lesson/IMG_1092.JPG",
-                    "title":"王海超",
-                    "level":"赞成",
-                    "count":"十点",
-                    "url":"测试"
-                },
-                {
-                    "img":"/static/imgs/lesson/IMG_1096.JPG",
-                    "title":"王楠",
-                    "level":"赞成",
-                    "count":"十点",
-                    "url":"运维"
-                },
-                {
-                    "img":"/static/imgs/lesson/IMG_1095.JPG",
-                    "title":"李鹏",
-                    "level":"赞成",
-                    "count":"九点半",
-                    "url":"前端"
-                },
-                {
-                    "img":"/static/imgs/lesson/IMG_1094.JPG",
-                    "title":"张安东",
-                    "level":"赞成",
-                    "count":"十点",
-                    "url":"app"
-                },
-                {
-                    "img":"/static/imgs/lesson/IMG_1093.JPG",
-                    "title":"宁杉",
-                    "level":"赞成",
-                    "count":"九点半",
-                    "url":"app"
-                }
-            ],
-        }
-    },
-    onLoad(option){
-        console.log(option)
-        this.url = option.lesson
-    },
-    components:{
-        lessonCell,
+    methods: {
+        getUserInfo(e) {
+            // 判断授权是否成功
+            if (e.mp.detail.userInfo) {
+                // console.log(e.mp.detail.userInfo)
+                // 存储到vuex
+                this.$store.dispatch('setIsAuthenticated', true)
+                this.$store.dispatch('setUser', e.mp.detail.userInfo)
+
+                wx.redirectTo({
+                    url: '../question/main',
+                })
+            }
+        },
     },
 }
 </script>
 
-<style scoped>
-.learn {
-  height: 100%;
-  box-sizing: border-box;
-}
-.learn_info {
-  padding: 10px;
-  display: flex;
-  flex-direction: row;
-  background-color: #fff;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-  border: 1px solid #ebeef5;
-}
-.learn_info img {
-  width: 85px;
-  height: 85px;
-}
-.info_text {
-  padding: 10px;
-}
-.info_text h4 {
-  font-weight: bold;
-}
-.info_text h4 span {
-  color: #009eef;
-}
-.info_text p {
-  color: #ccc;
-  font-size: 14px;
-  margin-top: 10px;
-}
-.info_text p span {
-  color: #85c646;
+<style lang="scss" scoped>
+.container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
-.my_lesson .hot_lesson {
-  width: 100%;
-  margin-top: 16px;
-  background-color: #fff;
-  border: 1px solid #ebeef5;
+.login {
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
-.lesson_wrap {
-  width: 100%;
-  overflow-x: auto;
-}
-.lesson_scroll {
-  max-width: 200%;
-  min-width: 100%;
-  display: flex;
-  flex-direction: row;
-}
-.lesson_card {
-  display: flex;
-  flex-direction: column;
-  min-width: 120px;
-  padding: 10px 5px;
-}
-.lesson_card img {
-  width: 100%;
-  height: 100px;
-  border-radius: 5px;
-}
-.lesson_card span {
-  font-size: 14px;
-  color: #333;
-}
-::-webkit-scrollbar {
-  display: none;
-}
-.start_lesson {
-  padding: 20px 0;
-  box-sizing: border-box;
-  text-align: center;
-}
-.start_lesson button {
-  background-color: #fff;
-  color: #009eef;
-  width: 150px;
-  border-radius: 30px;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-}
-.start_lesson button::after {
-  border: none;
+.login img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
 }
 
-/* 修复样式 */
-.my_lesson,
-.start_lesson{
-  background-color: #fff;
-}
-.my_lesson{
-  margin-top: 16px;
-  border-top: 1px solid #ebeef5;
-}
-.start_lesson{
-  border-bottom: 1px solid #ebeef5;
+.login .learn {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
 }
 
-.hot_lesson {
-  width: 100%;
-  margin-top: 16px;
-  background-color: #fff;
-  border: 1px solid #ebeef5;
-}
-
-
-.lesson_all {
-  width: 100%;
-  box-sizing: border-box;
-  /* padding: 10px; */
-  overflow: hidden;
-  line-height: 46px;
-  padding: 0 10px;
-}
-.lesson_all .look_all {
-  font-size: 12px;
-  color: #aaa;
-  float: right;
-  
+.learn button {
+    position: absolute;
+    top: 90%;
+    left: 10%;
+    width: 80%;
+    background-color: #009eef;
+    color: white;
 }
 </style>
