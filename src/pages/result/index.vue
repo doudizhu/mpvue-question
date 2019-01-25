@@ -19,56 +19,56 @@ export default {
         return {
             hotLessons: [
                 {
-                    "img":"/static/imgs/lesson/IMG_1091.JPG",
+                    "img":"/static/imgs/lesson/avatar_1091.jpg",
                     "title":"张迪",
                     "level":"赞成",
                     "count":"九点半",
                     "url":"后端"
                 },
                 {
-                    "img":"/static/imgs/lesson/IMG_1089.JPG",
+                    "img":"/static/imgs/lesson/avatar_1089.jpg",
                     "title":"王剑飞",
                     "level":"不赞成",
                     "count":"十点半",
                     "url":"前端"
                 },
                 {
-                    "img":"/static/imgs/lesson/IMG_1090.JPG",
+                    "img":"/static/imgs/lesson/avatar_1090.jpg",
                     "title":"刘广睿",
                     "level":"不赞成",
                     "count":"十点半",
                     "url":"数据"
                 },
                 {
-                    "img":"/static/imgs/lesson/IMG_1092.JPG",
+                    "img":"/static/imgs/lesson/avatar_1092.jpg",
                     "title":"王海超",
                     "level":"赞成",
                     "count":"十点",
                     "url":"测试"
                 },
                 {
-                    "img":"/static/imgs/lesson/IMG_1096.JPG",
+                    "img":"/static/imgs/lesson/avatar_1096.jpg",
                     "title":"王楠",
                     "level":"赞成",
                     "count":"十点",
                     "url":"运维"
                 },
                 {
-                    "img":"/static/imgs/lesson/IMG_1095.JPG",
+                    "img":"/static/imgs/lesson/avatar_1095.jpg",
                     "title":"李鹏",
                     "level":"赞成",
                     "count":"九点半",
                     "url":"前端"
                 },
                 {
-                    "img":"/static/imgs/lesson/IMG_1094.JPG",
+                    "img":"/static/imgs/lesson/avatar_1094.jpg",
                     "title":"张安东",
                     "level":"赞成",
                     "count":"十点",
                     "url":"app"
                 },
                 {
-                    "img":"/static/imgs/lesson/IMG_1093.JPG",
+                    "img":"/static/imgs/lesson/avatar_1093.jpg",
                     "title":"宁杉",
                     "level":"赞成",
                     "count":"九点半",
