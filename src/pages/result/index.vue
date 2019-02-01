@@ -25,13 +25,13 @@ export default {
                     "count":"九点半",
                     "url":"后端"
                 },
-                {
-                    "img":"/static/imgs/lesson/avatar_1089.jpg",
-                    "title":"王剑飞",
-                    "level":"不赞成",
-                    "count":"十点半",
-                    "url":"前端"
-                },
+                // {
+                //     "img":"/static/imgs/lesson/avatar_1089.jpg",
+                //     "title":"王剑飞",
+                //     "level":"不赞成",
+                //     "count":"十点半",
+                //     "url":"前端"
+                // },
                 {
                     "img":"/static/imgs/lesson/avatar_1090.jpg",
                     "title":"刘广睿",

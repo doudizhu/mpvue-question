@@ -5,7 +5,7 @@
             h4 {{title}} ({{url}})
             p
                 span.level {{level}}
-                span.learn_count {{count}}开始
+                span.learn_count 建议{{count}}开始
 </template>
 
 <script>

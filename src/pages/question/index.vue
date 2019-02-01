@@ -4,7 +4,7 @@
     .qs_content(v-if='questions.length > 0')
         div(v-if='!startqs')
             p.title 温馨提示
-            .warn_tag 为了更好对的制定工作计划，提高协作效率，请首先回答以下问题
+            .warn_tag 为了更好对的制定工作计划，提高大家的协作效率，请回答以下问题
         div(v-else)
             p.title {{questions[currentIndex].title}}
             .response(
@@ -15,6 +15,9 @@
                 img(v-if='item.select' src='/static/imgs/selected.jpg')
                 img(v-else src='/static/imgs/unselect.jpg')
                 span {{item.label}}
+
+            div(v-if='plus_show' style="margin-top:20px;") 有什么好的建议或想法？
+                textarea(placeholder='选填' style='border:1px solid #ccc;height:90px;')
     button.qs_btn(
         @click='btn_click'
         :disabled="disabled"
@@ -30,6 +33,8 @@ export default {
             currentIndex: 0, // 记录当前回答到第几道题
             btn_title: '开始问答', // 按钮的title
             lesson: '', // 记录提交的问题
+
+            plus_show: true,// 补充说明
         }
     },
     onLoad() {
@@ -43,6 +48,8 @@ export default {
         this.currentIndex = 0
         this.btn_title = '开始问答'
         this.lesson = ''
+
+        this.plus_show = true
     },
     computed: {
         disabled() {
@@ -74,7 +81,7 @@ export default {
                     ]
                 },
                 {
-                    "title": "晨会合理开始的时间？",
+                    "title": "晨会建议开始的时间？",
                     "option": [{
                             "label": "九点半",
                             "select": false
@@ -109,10 +116,6 @@ export default {
                         },
                         {
                             "label": "运维",
-                            "select": false
-                        },
-                        {
-                            "label": "数据",
                             "select": false
                         }
                     ]
@@ -151,6 +154,10 @@ export default {
                     // console.log(this.lesson)
                     // 完成
                     this.sendQuestions()
+                }
+
+                if(this.currentIndex > 0){
+                    this.plus_show = false
                 }
             }
         },
